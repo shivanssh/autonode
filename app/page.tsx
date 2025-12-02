@@ -1,14 +1,10 @@
-import { cn } from "@/lib/utils";
+import prisma from "@/lib/db";
 
-const Page = () => {
-  const secondary = true;
+const Page = async () => {
+  const users = await prisma.user.findMany();
   return (
-    <div
-      className={cn(
-        "text-pink-400",
-        secondary && "text-red-500"
-      )}>
-      Hello World
+    <div>
+      {JSON.stringify(users)}
     </div>
   );
 };
